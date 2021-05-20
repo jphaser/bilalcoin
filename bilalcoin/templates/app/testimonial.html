@@ -16,7 +16,7 @@
                             {{test.desc}}
                         </p>
                         <div class="testimonial-content">
-                            <div class="pic"><img src="{{test.pic.url}}" width="70" alt=""></div>
+                            <div class="pic"><img src="{% if test.pic %}{{test.pic.url}}{% else %}{% static 'images/user.png' %}{% endif %}" width="70" alt=""></div>
                             <h3 class="title">{{test.name}}</h3>
                             <span class="post">{{test.created}}</span>
                         </div>
