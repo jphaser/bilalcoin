@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block sidebar %}
+{% include 'app/sidebar.html' %}
+{% endblock %}
+
+{% block strip %}
+<section id="cta" class="text-center">
+  <div class="action">
+    <img src="{% static 'images/logo-lg.png' %}" alt="Logo Marker">
+    <h3>{% trans 'Trade Stocks and Currencies here' %}</h3>
+    <p>Join the world and trade in the <b class="font-weight-bolder" style="color:var(--color-text)">No 1. broker and investment
+        platform</b> today</p>
+    <a href="{% url 'account_signup' %}" class="btn btn-warning font-weight-bold">{% trans 'Start Here' %}</a>
+  </div>
+</section>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "FOREXCOM:NSXUSD",
+          "title": "Nasdaq 100"
+        },
+        {
+          "proName": "FX_IDC:EURUSD",
+          "title": "EUR/USD"
+        },
+        {
+          "proName": "BITSTAMP:BTCUSD",
+          "title": "BTC/USD"
+        },
+        {
+          "proName": "BITSTAMP:ETHUSD",
+          "title": "ETH/USD"
+        }
+      ],
+        "showSymbolLogo": true,
+          "colorTheme": "light",
+            "isTransparent": false,
+              "displayMode": "adaptive",
+                "locale": "en"
+    }
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+<div id="about-section"> 
+      <div class="text-center"> 
+        <h1 class=" display-3 title">
+          Who are we?
+        </h1> 
+        <p class="desc text-center">
+          Bilialcoin is a company that has been in existence since 2017 with an automatic processing system aimed at maximizing investor return on investment and maintaining good profits
+          <br>
+          <br>
+          Bilialcoin is a popular and a reliable online company in which you can invest and make a daily of 20% and more from your capital.
+          <br>
+          <br>
+          Bilialcoin is the best crypto trading company that provides investors with a cutting edge trading platform as well as a dedicated partner to all investors promoting sustainable investing and generating long term value for investors 
+          <br>
+          <br>
+        </p> 
+    </div> 
+    <div class="widget">
+      <div class="row no-gutters">
+        <div class="col-md-6 card border-0">
+          <img class="img-responsive" src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80" alt="Nick Chong">
+        </div>
+        <div class="col-md-6 card border-0">
+          <div class="p-5 widget">
+            <h3>What can you trade with on Bilialcoin</h3>
+            <div class="text-left mt-3">
+              <div class="align-middle">
+                <div class="trades">
+                  <div class="icon">
+                    <img class="image-responsive" src="{% static 'images/icons/crypto.png' %}" height="30" alt="">
+                  </div>
+                  <div class=" text-wrap">
+                    <h6>Crypto Investment</h6>
+                    All major crypto available now for investment and trading
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-left mt-3">
+              <div class="align-middle">
+                <div class="trades">
+                  <div class="icon">
+                    <img src="{% static 'images/icons/shares.png' %}" height="30" alt="">
+                  </div>
+                  <div class=" text-wrap">
+                    <h6>Shares</h6>
+                    Over 10,000 stocks on global exchanges
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-left mt-3">
+              <div class="align-middle">
+                <div class="trades">
+                  <div class="icon">
+                    <img src="{% static 'images/icons/indices.png' %}" height="30" alt="">
+                  </div>
+                  <div class=" text-wrap">
+                    <h6>Indices</h6>
+                    Over 32 mojor indices, local and international
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-left mt-3">
+              <div class="align-middle">
+                <div class="trades">
+                  <div class="icon">
+                    <img src="{% static 'images/icons/commodities.png' %}" height="30" alt="">
+                  </div>
+                  <div class=" text-wrap">
+                    <h6>Commodities</h6>
+                    Gold, Oil, Silver & more
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h3 class="display-5">Our Investment Plans</h3>
+  <p class="lead">
+    Earn good ROI's, benefiting from our experienced investment managers to guarantee continuous profits.
+  </p>
+</div>
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Daily ROI</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">20% <small class="text-muted">/ Daily</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Min <b>$50 investment</b></li>
+          <hr>
+          <li>Max <b>$1000 investment</b></li>
+        </ul>
+        <a href="{% url 'transactions:deposit' %}" class="btn btn-lg btn-block btn-warning">Invest Now</a>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">7 Days ROI</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">55% <small class="text-muted">/ Daily</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Min <b>$1000 investment</b></li>
+          <hr>
+          <li>Max <b>$25000 investment</b></li>
+        </ul>
+        <a href="{% url 'transactions:deposit' %}" class="btn btn-lg btn-block btn-warning">Invest Now</a>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">14 Days ROI</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">70% <small class="text-muted">/ Daily</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Min <b>$25000 investment</b></li>
+          <hr>
+          <li>Max <b>$50000 investment</b></li>
+        </ul>
+        <a href="{% url 'transactions:deposit' %}" class="btn btn-lg btn-block btn-warning">Invest Now</a>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">30 Days ROI</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">85% <small class="text-muted">/ Daily</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Min <b>$50000 investment</b></li>
+          <hr>
+          <li>Max <b>$100000 investment</b></li>
+        </ul>
+        <a href="{% url 'transactions:deposit' %}" class="btn btn-lg btn-block btn-warning">Invest Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+    <div class="text-center align-middle">
+      <div style="width:70%;" class="mx-auto">
+        <h3 class="display-5">How we work at Bilialcoin</h3>
+        <p class="text-center">We have ensured our platform displays perfectly well with multiple devices, making it easy for you to start
+          trading with safety and convenience.</p>
+        <div class="row">
+          <div class="card col-sm-12 col-md-4 p-5">
+            <img class="img-responsive text-center" height="50" width="50" src="{% static 'images/icons/deposit.png' %}" alt="deposit"><span class="font-weight-bold">Deposit</span>
+            <p>Send bitcoins to the personal wallet, which generated by the platform</p>
+          </div>
+          <div class="card col-sm-12 col-md-4 p-5">
+            <img class="img-responsive text-center" height="50" width="50" src="{% static 'images/icons/profit.png' %}" alt="profit"><span class="font-weight-bold">Profit</span>
+            <p>Get your profit up to 100% in 60 seconds in your account</p>
+          </div>
+          <div class="card col-sm-12 col-md-4 p-5">
+            <img class="img-responsive text-center" height="50" width="50" src="{% static 'images/icons/withdraw.png' %}" alt="withdraw"><span class="font-weight-bold">Withdraw</span>
+            <p>Get your withdrawal within 5 days without Verification</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block wide %}
+{% include 'app/economic-calendar.html' %}
+
+<div class="widget">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_28483"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget(
+    {
+    "width": "100%",
+    "height": 610,
+    "symbol": "NASDAQ:AAPL",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "dark",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": true,
+    "hide_side_toolbar": false,
+    "allow_symbol_change": true,
+    "details": true,
+    "container_id": "tradingview_28483"
+  }
+    );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</div>
+
+{% include 'app/testimonial.html' %}  
+
+{% include 'app/faq.html' %}
+
+<section class="mt-4" style="min-height: 420px; width:100%">
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+  {
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "width": "100%",
+  "height": 420,
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+</section>
+
+
+{% endblock %}
+
+
+{% block inline_javascript %}
+<script>
+  $(document).ready(function(){
+    $("#testimonial-slider").owlCarousel({
+        items:3,
+        itemsDesktop:[1000,3],
+        itemsDesktopSmall:[979,2],
+        itemsTablet:[768,2],
+        itemsMobile:[650,1],
+        pagination:true,
+        autoPlay:true
+    });
+});
+</script>
+{% endblock %}

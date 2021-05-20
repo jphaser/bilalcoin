@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=bilalcoin
+POSTGRES_USER=kaUFszhlbJoxYxjOpYEXTzRIVWodexed
+POSTGRES_PASSWORD=TOno8Ha9jj4o3TZSKCz6auWknwXxgUJAj0pvFtm6Z6SOEhj0Zqw311ati0z74WIS

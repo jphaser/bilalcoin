@@ -1,0 +1,70 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block sidebar %}
+{% include 'app/sidebar.html' %}
+{% endblock %}
+
+{% block inner %}
+<div class="widget">
+      <div class="card">
+
+        <div class="card-body mb-3">
+          <div class="card-header  mb-4">
+            <h1>{% trans "Sign In" %}</h1>
+          </div>
+
+          <form class="login mt-4" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="button text-primary secondaryAction" href="{% url 'account_reset_password' %}"><small class="font-weight-bold">{% trans "Forgot Password?" %}</small></a>
+            <button class="primaryAction my-3 btn btn-block btn-warning" type="submit">{% trans "Sign In" %}</button>
+
+            {% get_providers as socialaccount_providers %}
+          
+            {% if socialaccount_providers %}
+            <p>
+              <small>
+              {% blocktrans with site.name as site_name %}Please sign in with one
+            of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+            for a {{ site_name }} account and sign in below:{% endblocktrans %}
+              </small>
+            </p>
+    
+            <div class="socialaccount_ballot">
+            
+              <ul class="socialaccount_providers">
+                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+              </ul>
+            
+              <div class="login-or">{% trans 'or' %}</div>
+            
+            </div>
+            
+            {% include "socialaccount/snippets/login_extra.html" %}
+            
+            {% else %}
+            <p>
+              <small>
+              {% blocktrans %}If you have not created an account yet, then please
+            <a href="{{ signup_url }}" class="text-primary font-weight-bold">sign up</a> first.{% endblocktrans %}
+              </small>
+            </p>
+            {% endif %}
+    
+          </form>
+
+        </div>
+        
+      </div>
+</div>
+
+{% endblock %}
