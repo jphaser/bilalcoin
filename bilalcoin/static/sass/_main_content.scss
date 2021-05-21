@@ -1,8 +1,13 @@
 // Main content area styling
 .btn-warning {
-  color: white;
+  color: white !important;
   background-color: #1eae98;
   border: 1px solid #1eae98;
+  &:hover {
+    color: white !important;
+    background-color: darken(#1eae98, 30%) !important;
+    border: 1px solid #1eae98 !important;
+  }
 }
 .text-warning {
   color: #1eae98 !important;
