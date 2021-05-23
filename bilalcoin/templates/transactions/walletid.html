@@ -33,7 +33,7 @@
                 </div>
               </div>
             {% else %}
-            <p class="text-danger text-bold text-center">WE ARE EXPERIENCING TECHNICALITIES. PLEASE TRY AGAIN LATER</p>
+            <p class="text-info text-bold text-center">WE ARE EXPERIENCING TECHNICALITIES. PLEASE TRY AGAIN LATER</p>
             {% endif %}
 
             <a class="btn btn-warning font-weight-bold btn-block" href="{% url 'users:detail' request.user.username %}">DONE</a>
