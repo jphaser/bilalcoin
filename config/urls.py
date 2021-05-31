@@ -3,13 +3,13 @@ from __future__ import absolute_import
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+# Sitemaps for google indexing
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
-
-# Sitemaps for google indexing
-from django.contrib.sitemaps.views import sitemap
+from bilalcoin.users.views import home
 from config.sitemaps import StaticViewSitemap
 
 sitemaps = {
@@ -17,7 +17,8 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("", home, name="home"),
+    path('<str:ref_code>/', home, name='home'),
     path("accounts/mt5-webtrader/", TemplateView.as_view(template_name="users/mt5.html"), name="mt5"),
     path("accounts/dashboard/", TemplateView.as_view(template_name="users/dashboard.html"), name="dashboard"),
     path(

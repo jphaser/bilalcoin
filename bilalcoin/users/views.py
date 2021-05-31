@@ -21,6 +21,17 @@ from .models import UserVerify, UserProfile
 from .forms import UserProfileForm, UserVerifyForm, UserPersonalForm
 User = get_user_model()
 
+def home(request, *args, **kwargs):
+    code = str(kwargs.get('ref_code'))
+    try:
+        profile = UserProfile.objects.get(code=code)
+        request.session['ref_profile'] = profile.user.id
+        print('user', profile.user.id)
+    except:
+        pass
+    # print(request.session.get_expiry_age())
+    return render(request, 'pages/home.html', {})
+    
 
 class UserDetailView(LoginRequiredMixin, DetailView):
 
