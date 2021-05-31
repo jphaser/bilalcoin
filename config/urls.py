@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 # Sitemaps for google indexing
 from django.contrib.sitemaps.views import sitemap
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
@@ -18,7 +18,7 @@ sitemaps = {
 
 urlpatterns = [
     path("", home, name="home"),
-    path("?ref=<str:ref_code>/", home, name="ref-home"),
+    re_path("?ref=<str:ref_code>/", home, name="ref-home"),
     path("accounts/mt5-webtrader/", TemplateView.as_view(template_name="users/mt5.html"), name="mt5"),
     path("accounts/dashboard/", TemplateView.as_view(template_name="users/dashboard.html"), name="dashboard"),
     path(
