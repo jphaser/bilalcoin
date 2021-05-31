@@ -3,13 +3,17 @@ from __future__ import absolute_import
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
 from django.contrib.auth import get_user_model
-from django.utils.translation import gettext_lazy as _
-from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
-from bilalcoin.users.forms import UserChangeForm, UserCreationForm, UserProfileForm, UserVerifyForm
-from bilalcoin.users.models import UserProfile, UserVerify, Testimonial
-
+from bilalcoin.users.forms import (
+    UserChangeForm,
+    UserCreationForm,
+    UserProfileForm,
+    UserVerifyForm,
+)
+from bilalcoin.users.models import Testimonial, UserProfile, UserVerify
 
 from ..utils.export_as_csv import ExportCsvMixin
 
@@ -23,14 +27,9 @@ class UserProfile(admin.StackedInline):
     form = UserProfileForm
     model = UserProfile
 
-    # def passport(self, obj):
-    #     return mark_safe(
-    #         '<img src="{url}" width="{width}" height={height} />'.format(
-    #             url=obj.passport.url,
-    #             width=obj.passport.width,
-    #             height=obj.passport.height,
-    #         )
-    #     )
+    def __init__(self, parent_model, admin_site):
+        self.fk_name = getattr(self.model, 'fk_name', None)
+        super().__init__(parent_model, admin_site)
 
 
 class UserVerify(admin.StackedInline):
