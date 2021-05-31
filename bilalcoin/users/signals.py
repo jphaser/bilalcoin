@@ -45,7 +45,7 @@ def user_signed_up_(request, user, **kwargs):
         send_mail(
             f"New User Registered with {profile_id} code",
             f"{user.username} just registered with this referrer  \n User: {recommended_by_profile}  now",
-            "noreply@encryptfinance.net",
-            ["admin@encryptfinance.net", recommender_email, registered_user.email],
+            "noreply@bilalcoin.net",
+            ["admin@bilalcoin.net", recommender_email, registered_user.email],
             fail_silently=False,
         )
