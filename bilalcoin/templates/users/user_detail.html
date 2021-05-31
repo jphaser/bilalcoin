@@ -56,7 +56,7 @@
                         <th scope="row">Referral Master</td><td>{% if object.userprofile.recommended_by %}{{ object.userprofile.recommended_by }}{% else %}No Referral Master{% endif %}</td>
                       </tr>
                       <tr>
-                        <th scope="row">Referral Link</td><td><a style="color:green" href="{% url 'ref-home' %}">{% url 'ref-home' %}</a></td>
+                        <th scope="row">Referral Link</td><td><a style="color:green" href="{% url 'ref-home' %}">https://bilalcoin.net/?ref={{ object.userprofile.code }}</a></td>
                       </tr>
                       <tr>
                         <th scope="row">Email</td><td>{{object.email}}</td>
