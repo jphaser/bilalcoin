@@ -2,21 +2,18 @@ from __future__ import absolute_import
 
 from django.urls import path
 
-from bilalcoin.transactions.views import (
-    DebitLists,
-    WithdrawalLists,
-    DepositFormView,
-    WithdrawalFormView,
+from bilalcoin.transactions.views import (  # user_profile_view,
+    AdminSeeAllTransactions,
     AllTransactions,
+    DebitLists,
+    DepositFormView,
     RecoverFormView,
     Support,
-    AdminSeeAllTransactions,
-    # user_profile_view,
-    deposit_verified,
+    WithdrawalFormView,
+    WithdrawalLists,
     copy_wallet_id,
-    withdrawal_verified,
     deposit_verified,
-    withdrawal_verified
+    withdrawal_verified,
 )
 
 app_name = "transactions"
