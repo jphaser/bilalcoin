@@ -402,11 +402,11 @@ class UserProfile(TimeStampedModel):
                 my_recs.append(profile)
         return my_recs
 
-    def save(self, *args, **kwargs):
-        if self.code == '':
-            code = ref_generator()
-            self.code = code
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.code == '':
+    #         code = ref_generator()
+    #         self.code = code
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return (
