@@ -4,6 +4,9 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
+from django.contrib.messages import constants as messages
+from django.core.exceptions import ImproperlyConfigured
+from django.utils.translation import gettext_lazy as _
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # bilalcoin/
@@ -45,6 +48,7 @@ DATABASES = {
     "default": env.db("DATABASE_URL", default="postgres://edavids:Jeloblisvent123.@127.0.0.1:5432/bilal"),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -166,6 +170,7 @@ MIDDLEWARE = [
 
     # Django default security middlewares
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
@@ -244,6 +249,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 # FIXTURES
 # ------------------------------------------------------------------------------
@@ -271,7 +277,7 @@ EMAIL_BACKEND = env(
     default="django.core.mail.backends.smtp.EmailBackend",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
-EMAIL_TIMEOUT = 5
+EMAIL_TIMEOUT = 500
 
 # ADMIN
 # ------------------------------------------------------------------------------
@@ -331,6 +337,9 @@ CELERY_TASK_TIME_LIMIT = 5 * 60
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+
+
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
@@ -489,7 +498,41 @@ PROFILE_MODEL_NAME = "Users"  # letter case insensitive
 COMMENT_USE_GRAVATAR = True
 
 
-JET_DEFAULT_THEME = "light-blue"
+JET_CHANGE_FORM_SIBLING_LINKS = True
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+JET_THEMES = [
+    {
+        'theme': 'default', # theme folder name
+        'color': '#47bac1', # color of the theme's button in user menu
+        'title': 'Default' # theme title
+    },
+    {
+        'theme': 'green',
+        'color': '#44b78b',
+        'title': 'Green'
+    },
+    {
+        'theme': 'light-green',
+        'color': '#2faa60',
+        'title': 'Light Green'
+    },
+    {
+        'theme': 'light-violet',
+        'color': '#a464c4',
+        'title': 'Light Violet'
+    },
+    {
+        'theme': 'light-blue',
+        'color': '#5EADDE',
+        'title': 'Light Blue'
+    },
+    {
+        'theme': 'light-gray',
+        'color': '#222',
+        'title': 'Light Gray'
+    }
+]
 JET_SIDE_MENU_COMPACT = True
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = str(ROOT_DIR / "client_secrets.json")
 
